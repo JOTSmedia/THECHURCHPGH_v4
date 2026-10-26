@@ -1,0 +1,22 @@
+/* Real church interior, with the stained glass still in its architectural setting.
+   Replace images/church-opening.webp when the final image is supplied. */
+#opening{position:fixed;inset:0;margin:0;max-width:none;width:100%;max-height:none;height:100svh;padding:0;border:0;overflow:hidden;background:var(--bg);color:var(--ink);z-index:100;opacity:1;transition:opacity .5s ease;--opening-light:.35}
+#opening:not([open]){display:none}
+#opening::backdrop{background:var(--bg)}
+.opening-active{overflow:hidden}
+.opening-architecture{position:absolute;inset:0;isolation:isolate}
+.opening-architecture img{height:100%;width:100%;object-fit:cover;object-position:50% 76%;opacity:var(--opening-light);transform:scale(1.025);transition:opacity .18s linear}
+.opening-architecture::after{content:'';position:absolute;inset:0;background:rgba(12,12,10,.18)}
+.opening-heading{position:absolute;z-index:2;top:clamp(24px,4vh,46px);left:var(--gutter);right:var(--gutter);margin:0;font:400 clamp(42px,5.4vw,82px)/.9 'Libre Caslon Display',Georgia,serif;letter-spacing:-.04em}
+.opening-bottom{position:absolute;z-index:2;left:var(--gutter);right:var(--gutter);bottom:clamp(20px,4vh,40px);display:grid;grid-template-columns:1fr auto;align-items:end;gap:18px 28px}
+.opening-bottom>p{margin:0;font-size:14px;line-height:1.5}
+.opening-bottom>output{font:400 clamp(60px,7vw,104px)/.85 'Libre Caslon Display',Georgia,serif;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+#opening-progress{height:4px;grid-column:1/-1;background:rgba(242,238,229,.28);overflow:hidden}
+#opening-fill{display:block;width:100%;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:left center}
+.opening-bottom>button{grid-column:1/-1;justify-self:end;display:flex;align-items:center;gap:20px;background:none;color:inherit;padding:8px 0;font-size:14px;min-height:44px}
+.opening-bottom>button:hover{color:var(--accent)}
+#opening.is-leaving{opacity:0}
+@media(max-width:700px){.opening-heading{font-size:clamp(34px,10vw,64px);top:28px}.opening-architecture img{object-position:52% 60%}.opening-bottom{bottom:20px;gap:16px 22px}.opening-bottom>output{font-size:70px}.opening-bottom>p,.opening-bottom>button{font-size:13px}}
+@media(max-height:500px){.opening-heading{top:20px;font-size:36px}.opening-bottom{bottom:14px;gap:10px 20px}.opening-bottom>output{font-size:52px}}
+@media(prefers-reduced-motion:reduce){#opening,.opening-architecture img{transition:none}.opening-architecture img{transform:none}}
+.motion-paused .opening-architecture img{transition:none;transform:none}
